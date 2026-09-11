@@ -13,13 +13,6 @@ const education = [
     institution: 'Sri Siddaganga PU College, Davangere',
     score: '94.33%',
   },
-  {
-    year: '2020 — 2021',
-    degree: 'SSLC',
-    field: 'Secondary School',
-    institution: 'Sri Mahadeva Kesari High School, Attigere',
-    score: '94.72%',
-  },
 ]
 
 function Education() {
