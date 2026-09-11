@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -31,6 +32,29 @@ function Navbar() {
     { name: 'Resume', id: 'resume' },
     { name: 'Contact', id: 'contact' },
   ]
+
+  const handleNavigation = (event, sectionId) => {
+    event.preventDefault()
+    setActiveSection(sectionId)
+    setIsMenuOpen(false)
+
+    const section = document.getElementById(sectionId)
+
+    if (!section) {
+      return
+    }
+
+    document.querySelectorAll('.section--navigated').forEach((element) => {
+      element.classList.remove('section--navigated')
+    })
+
+    section.classList.add('section--navigated')
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+    window.setTimeout(() => {
+      section.classList.remove('section--navigated')
+    }, 850)
+  }
 
   return (
     <nav
@@ -68,6 +92,8 @@ function Navbar() {
             <a
               key={item.id}
               href={`#${item.id}`}
+              onClick={(event) => handleNavigation(event, item.id)}
+              aria-current={activeSection === item.id ? 'page' : undefined}
               className="text-sm font-medium text-[#475467] transition-colors duration-200 hover:text-[#356AE6]"
             >
               {item.name}
@@ -144,7 +170,8 @@ function Navbar() {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(event) => handleNavigation(event, item.id)}
+                aria-current={activeSection === item.id ? 'page' : undefined}
                 className="rounded-lg px-3 py-3 text-sm font-semibold text-[#475467] transition-colors duration-200 hover:bg-[#F2F4F7] hover:text-[#356AE6]"
               >
                 {item.name}

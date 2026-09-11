@@ -204,6 +204,27 @@ nav > div > div:last-child a:hover {
   scroll-margin-top: 92px;
 }
 
+.section--navigated {
+  animation: section-navigate 850ms cubic-bezier(0.22, 0.8, 0.3, 1) both;
+}
+
+@keyframes section-navigate {
+  0% {
+    opacity: 0.72;
+    transform: translateY(14px);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #work,
 #education {
   background: var(--paper) !important;
