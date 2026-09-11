@@ -46,7 +46,7 @@ nav {
   background: rgba(251, 252, 248, 0.9) !important;
 }
 
-nav > div {
+nav > .nav-inner {
   height: 76px !important;
 }
 
@@ -360,12 +360,12 @@ footer div {
     box-shadow: 0 5px 18px rgba(32, 59, 73, 0.1);
   }
 
-  nav > div {
+  nav > .nav-inner {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
 
-  nav > div > div:nth-child(2) {
+  nav .desktop-nav {
     display: none;
   }
 

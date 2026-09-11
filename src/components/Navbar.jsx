@@ -1,7 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined
+    }
+
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.body.style.overflow = 'hidden'
+    document.addEventListener('keydown', closeOnEscape)
+
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [isMenuOpen])
 
   const navItems = [
     { name: 'Work', id: 'work' },
@@ -13,8 +33,20 @@ function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[#E4E7EC] bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
+    <nav
+      className="sticky top-0 z-[100] border-b border-[#E4E7EC] bg-white/95 backdrop-blur"
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') {
+          setIsMenuOpen(true)
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === 'mouse') {
+          setIsMenuOpen(false)
+        }
+      }}
+    >
+      <div className="nav-inner mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10 lg:px-16">
 
         {/* Logo */}
         <a
@@ -31,7 +63,7 @@ function Navbar() {
         </a>
 
         {/* Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="desktop-nav hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -43,21 +75,23 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Social Links and mobile menu toggle */}
-        <div className="flex items-center gap-2">
+        {/* Integrated mobile toolbar and social links */}
+        <div className="mobile-toolbar flex items-center gap-2 md:flex">
 
           <button
             type="button"
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={isMenuOpen ? 'Close navigation toolbar' : 'Open navigation toolbar'}
             aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen((open) => !open)}
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#E4E7EC] text-[#475467] transition-all duration-200 hover:border-[#356AE6] hover:text-[#356AE6] md:hidden"
+            onClick={() => setIsMenuOpen(true)}
+            onFocus={() => setIsMenuOpen(true)}
+            className="flex h-10 items-center gap-2 rounded-lg border border-[#E4E7EC] px-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#475467] transition-all duration-200 hover:border-[#356AE6] hover:text-[#356AE6] md:hidden"
           >
             <span className="flex w-4 flex-col gap-1">
               <span className="h-px w-full bg-current" />
               <span className="h-px w-full bg-current" />
               <span className="h-px w-full bg-current" />
             </span>
+            Menu
           </button>
 
           <a
@@ -92,8 +126,20 @@ function Navbar() {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute left-0 right-0 top-full border-t border-[#E4E7EC] bg-white px-6 py-4 shadow-lg md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+        <>
+          <button
+            type="button"
+            aria-label="Close menu overlay"
+            onClick={() => setIsMenuOpen(false)}
+            className="fixed bottom-0 left-0 right-0 top-[76px] z-40 bg-[#203B49]/25 md:hidden"
+          />
+
+          <div
+            role="dialog"
+            aria-label="Mobile navigation"
+            className="mobile-menu fixed left-0 right-0 top-[76px] z-50 max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-[#E4E7EC] bg-white px-6 py-4 shadow-xl md:hidden"
+          >
+            <div className="mx-auto flex max-w-7xl flex-col gap-1">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -104,8 +150,9 @@ function Navbar() {
                 {item.name}
               </a>
             ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   )
