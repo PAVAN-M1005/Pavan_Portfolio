@@ -1,0 +1,419 @@
+const projects = [
+  {
+    number: '01',
+    title: 'Vividha Kannada',
+    subtitle: 'Multi-Dialect Kannada Intelligence',
+    description:
+      'An AI-powered Kannada language system that identifies regional dialects, handles Kannada, Kanglish and code-mixed text, normalizes input to Standard Kannada, and performs sentiment analysis.',
+    category: 'AI / NLP',
+    technologies: [
+      'Python',
+      'NLP',
+      'FastAPI',
+      'IndicBERT',
+      'mT5',
+      'Gemini',
+    ],
+    github:
+      'https://github.com/PAVAN-M1005/vividha-kannada',
+  },
+
+  {
+    number: '02',
+    title: 'Expense Tracker',
+    subtitle: 'Personal Finance Management Platform',
+    description:
+      'A full-stack personal finance application for tracking expenses, managing budgets, analyzing spending, scheduling recurring expenses, and organizing financial activity.',
+    category: 'Full Stack',
+    technologies: [
+      'React',
+      'Node.js',
+      'Express',
+      'SQL',
+      'REST API',
+    ],
+    github:
+      'https://github.com/PAVAN-M1005/Expense-Tracker',
+    live:
+      'https://expensetracker001-ashy.vercel.app/',
+  },
+]
+
+
+function Projects() {
+  return (
+    <section
+      id="work"
+      className="bg-white px-6 py-28 md:px-10 lg:px-16"
+    >
+      <div className="mx-auto max-w-7xl">
+
+        {/* ==================================================
+            SECTION HEADER
+        ================================================== */}
+
+        <div className="mb-16">
+
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-[#356AE6]">
+            Selected Work
+          </p>
+
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+
+            <h2 className="text-4xl font-semibold tracking-[-0.03em] text-[#101828] md:text-5xl lg:text-6xl">
+              Things I've built.
+            </h2>
+
+            <p className="max-w-md text-sm leading-7 text-[#667085] md:text-right">
+              A selection of projects where I explore
+              artificial intelligence, NLP, machine learning,
+              and full-stack development.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        {/* ==================================================
+            PROJECT LIST
+        ================================================== */}
+
+        <div className="border-t border-[#E4E7EC]">
+
+          {projects.map((project) => (
+
+            <article
+              key={project.number}
+              className="
+                group
+                border-b
+                border-[#E4E7EC]
+                py-12
+                transition-all
+                duration-300
+                md:py-16
+              "
+            >
+
+              <div
+                className="
+                  grid
+                  grid-cols-1
+                  gap-8
+                  md:grid-cols-[70px_1fr]
+                  lg:grid-cols-[80px_1fr_auto]
+                  lg:gap-10
+                "
+              >
+
+                {/* ==================================================
+                    PROJECT NUMBER
+                ================================================== */}
+
+                <div>
+                  <span
+                    className="
+                      text-sm
+                      font-medium
+                      tracking-wider
+                      text-[#98A2B3]
+                    "
+                  >
+                    {project.number}
+                  </span>
+                </div>
+
+
+                {/* ==================================================
+                    PROJECT CONTENT
+                ================================================== */}
+
+                <div>
+
+                  {/* Category */}
+
+                  <p
+                    className="
+                      mb-3
+                      text-xs
+                      font-semibold
+                      uppercase
+                      tracking-[0.2em]
+                      text-[#356AE6]
+                    "
+                  >
+                    {project.category}
+                  </p>
+
+
+                  {/* Project title */}
+
+                  <h3
+                    className="
+                      text-3xl
+                      font-semibold
+                      tracking-[-0.025em]
+                      text-[#101828]
+                      transition-colors
+                      duration-300
+                      group-hover:text-[#356AE6]
+                      md:text-4xl
+                    "
+                  >
+                    {project.title}
+                  </h3>
+
+
+                  {/* Project subtitle */}
+
+                  <p
+                    className="
+                      mt-2
+                      text-lg
+                      font-medium
+                      text-[#344054]
+                    "
+                  >
+                    {project.subtitle}
+                  </p>
+
+
+                  {/* Description */}
+
+                  <p
+                    className="
+                      mt-5
+                      max-w-3xl
+                      text-sm
+                      leading-7
+                      text-[#667085]
+                      md:text-base
+                    "
+                  >
+                    {project.description}
+                  </p>
+
+
+                  {/* ==================================================
+                      TECHNOLOGIES
+                  ================================================== */}
+
+                  <div className="mt-6 flex flex-wrap gap-2">
+
+                    {project.technologies.map((technology) => (
+
+                      <span
+                        key={technology}
+                        className="
+                          rounded-full
+                          bg-[#F5F8FC]
+                          px-3
+                          py-1.5
+                          text-xs
+                          font-medium
+                          text-[#667085]
+                          transition-colors
+                          duration-300
+                          group-hover:bg-[#EEF4FF]
+                          group-hover:text-[#356AE6]
+                        "
+                      >
+                        {technology}
+                      </span>
+
+                    ))}
+
+                  </div>
+
+
+                  {/* ==================================================
+                      MOBILE BUTTONS
+                  ================================================== */}
+
+                  <div className="mt-8 flex flex-wrap gap-3 lg:hidden">
+
+                    {/* Live Demo */}
+
+                    {project.live && (
+
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-flex
+                          items-center
+                          gap-2
+                          rounded-lg
+                          bg-[#101828]
+                          px-5
+                          py-3
+                          text-sm
+                          font-medium
+                          text-white
+                          transition-all
+                          duration-300
+                          hover:bg-[#356AE6]
+                        "
+                      >
+                        Live Demo
+                        <span>↗</span>
+                      </a>
+
+                    )}
+
+
+                    {/* GitHub */}
+
+                    {project.github && (
+
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                          inline-flex
+                          items-center
+                          gap-2
+                          rounded-lg
+                          border
+                          border-[#D0D5DD]
+                          bg-white
+                          px-5
+                          py-3
+                          text-sm
+                          font-medium
+                          text-[#101828]
+                          transition-all
+                          duration-300
+                          hover:border-[#356AE6]
+                          hover:text-[#356AE6]
+                        "
+                      >
+                        GitHub
+                        <span>↗</span>
+                      </a>
+
+                    )}
+
+                  </div>
+
+                </div>
+
+
+                {/* ==================================================
+                    DESKTOP ACTIONS
+                ================================================== */}
+
+                <div
+                  className="
+                    hidden
+                    items-center
+                    gap-3
+                    lg:flex
+                  "
+                >
+
+                  {/* Live Demo */}
+
+                  {project.live && (
+
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        inline-flex
+                        items-center
+                        gap-2
+                        rounded-lg
+                        bg-[#101828]
+                        px-5
+                        py-3
+                        text-sm
+                        font-medium
+                        text-white
+                        transition-all
+                        duration-300
+                        hover:bg-[#356AE6]
+                      "
+                    >
+                      Live Demo
+                      <span>↗</span>
+                    </a>
+
+                  )}
+
+
+                  {/* GitHub */}
+
+                  {project.github && (
+
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        flex
+                        h-12
+                        w-12
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-[#D0D5DD]
+                        text-lg
+                        text-[#101828]
+                        transition-all
+                        duration-300
+                        hover:border-[#356AE6]
+                        hover:bg-[#356AE6]
+                        hover:text-white
+                      "
+                      aria-label={`View ${project.title} on GitHub`}
+                    >
+                      →
+                    </a>
+
+                  )}
+
+                </div>
+
+              </div>
+
+            </article>
+
+          ))}
+
+        </div>
+
+
+        {/* ==================================================
+            PROJECT COUNT
+        ================================================== */}
+
+        <div className="mt-10 flex items-center justify-between">
+
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#98A2B3]">
+            02 Featured Projects
+          </p>
+
+          <div className="flex items-center gap-3">
+
+            <span className="h-1.5 w-1.5 rounded-full bg-[#356AE6]" />
+
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#98A2B3]">
+              More coming soon
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+export default Projects

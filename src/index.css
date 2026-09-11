@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --ink: #17221f;
+  --muted: #66736d;
+  --line: #d9e3dd;
+  --paper: #fbfcf8;
+  --mint: #dff3e8;
+  --mint-strong: #b9e4d0;
+  --coral: #ec6a4f;
+  --coral-dark: #c7523d;
+  --navy: #203b49;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: var(--coral);
+  color: #fff;
+}
+
+nav {
+  border-color: var(--line) !important;
+  background: rgba(251, 252, 248, 0.9) !important;
+}
+
+nav > div {
+  height: 76px !important;
+}
+
+nav a {
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+nav a:first-child > div {
+  border-radius: 13px !important;
+  background: var(--coral) !important;
+  box-shadow: 4px 4px 0 var(--mint-strong);
+}
+
+nav a:first-child span {
+  color: var(--ink) !important;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+nav a:not(:first-child) {
+  color: var(--muted) !important;
+}
+
+nav a:not(:first-child):hover {
+  color: var(--coral) !important;
+}
+
+nav > div > div:last-child a {
+  border-color: var(--line) !important;
+  color: var(--navy) !important;
+  border-radius: 12px !important;
+}
+
+nav > div > div:last-child a:hover {
+  border-color: var(--coral) !important;
+  color: var(--coral) !important;
+  background: #fff4ef;
+}
+
+#home {
+  min-height: calc(100vh - 76px) !important;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(223, 243, 232, 0.9), transparent 28%),
+    linear-gradient(135deg, var(--paper) 0%, #f6faf5 64%, #edf7f0 100%) !important;
+  padding-top: clamp(64px, 9vw, 120px) !important;
+  padding-bottom: clamp(64px, 8vw, 100px) !important;
+}
+
+#home h1,
+#work h2,
+#skills h2,
+#about h2,
+#education h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink) !important;
+  letter-spacing: -0.055em !important;
+}
+
+#home h1 {
+  max-width: 760px;
+  font-size: clamp(3.2rem, 7vw, 6.8rem) !important;
+  line-height: 0.98 !important;
+}
+
+#home h1 span,
+#about h2 span {
+  color: var(--coral) !important;
+}
+
+#home p,
+#work p,
+#skills p,
+#about p,
+#education p,
+#contact p {
+  color: var(--muted) !important;
+}
+
+#home > div > div:first-child > div:first-child p,
+#work > div > div:first-child p,
+#skills > div > div:first-child p,
+#education > div > div:first-child p {
+  color: var(--coral) !important;
+}
+
+#home a[class*='bg-'] {
+  border-radius: 12px !important;
+  background: var(--navy) !important;
+}
+
+#home a[class*='bg-']:hover {
+  background: var(--coral) !important;
+}
+
+#home a[class*='border-'] {
+  border-color: var(--line) !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+}
+
+#home a[class*='border-']:hover {
+  border-color: var(--coral) !important;
+  color: var(--coral) !important;
+}
+
+#home img {
+  border-radius: 28px !important;
+}
+
+#home > div > div:last-child > div > div:last-child {
+  border-color: var(--line) !important;
+  background: var(--paper) !important;
+  box-shadow: 8px 8px 0 var(--mint-strong) !important;
+}
+
+#home > div > div:last-child > div > div:last-child p:last-child {
+  color: var(--ink) !important;
+}
+
+#work,
+#skills,
+#about,
+#education,
+#contact {
+  scroll-margin-top: 92px;
+}
+
+#work,
+#education {
+  background: var(--paper) !important;
+}
+
+#skills,
+#about {
+  background: #f2f7f2 !important;
+}
+
+#skills {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(120deg, rgba(223, 243, 232, 0.8), rgba(242, 247, 242, 0.9) 54%, rgba(255, 244, 239, 0.55)) !important;
+}
+
+#work,
+#skills,
+#about,
+#education,
+#contact {
+  padding-top: clamp(76px, 9vw, 128px) !important;
+  padding-bottom: clamp(76px, 9vw, 128px) !important;
+}
+
+#work > div,
+#skills > div,
+#about > div,
+#education > div,
+#contact > div {
+  max-width: 1160px !important;
+}
+
+#work h3,
+#skills h3,
+#education h3,
+#contact h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--ink) !important;
+}
+
+#work article,
+#skills > div > div:last-of-type > div,
+#education > div > div:last-of-type > div {
+  border-color: var(--line) !important;
+}
+
+#work article:hover,
+#skills > div > div:last-of-type > div:hover,
+#education > div > div:last-of-type > div:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+#work article span[class*='bg-'],
+#skills span[class*='bg-'],
+#education span[class*='bg-'] {
+  background: #f2f8f3 !important;
+  color: var(--navy) !important;
+}
+
+#work article a,
+#contact a[class*='bg-'] {
+  border-radius: 10px !important;
+}
+
+#work article a[class*='bg-'] {
+  background: var(--navy) !important;
+}
+
+#work article a[class*='bg-']:hover {
+  background: var(--coral) !important;
+}
+
+#contact {
+  background: var(--navy) !important;
+}
+
+#contact h2,
+#contact h3 {
+  color: var(--paper) !important;
+}
+
+#contact h2 span {
+  color: var(--coral) !important;
+}
+
+#contact > div > p {
+  color: #d5e7dd !important;
+}
+
+#contact label,
+#contact h3 {
+  color: #e7f4ed !important;
+}
+
+#contact > div > div:last-child > div {
+  color: var(--ink) !important;
+  background: rgba(251, 252, 248, 0.96) !important;
+}
+
+#contact > div > div:last-child > div a {
+  color: var(--navy) !important;
+}
+
+#contact > div > div:last-child > div a:hover {
+  color: var(--coral) !important;
+}
+
+#contact > div > div:last-child > div a span:first-child {
+  background: var(--mint) !important;
+  color: var(--navy) !important;
+}
+
+#contact button {
+  background: var(--coral) !important;
+  color: #fff !important;
+}
+
+#contact button:hover {
+  background: var(--coral-dark) !important;
+}
+
+#contact label,
+#contact > div > div:last-child > div h3 {
+  color: var(--navy) !important;
+}
+
+#contact input,
+#contact textarea {
+  background: #f5f8f4 !important;
+  color: var(--ink) !important;
+}
+
+#contact h3 {
+  color: var(--navy) !important;
+}
+
+#contact > div > div:first-child > div {
+  background: rgba(223, 243, 232, 0.25) !important;
+}
+
+#contact > div > div:last-child > div {
+  border-color: rgba(223, 243, 232, 0.35) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+}
+
+#contact input,
+#contact textarea {
+  border-color: rgba(223, 243, 232, 0.3) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: var(--paper) !important;
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: #a9beb2 !important;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: var(--coral) !important;
+  box-shadow: 0 0 0 3px rgba(236, 106, 79, 0.2) !important;
+}
+
+footer {
+  background: var(--ink) !important;
+  border-color: rgba(223, 243, 232, 0.16) !important;
+}
+
+footer h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--paper) !important;
+}
+
+footer p,
+footer div {
+  color: #a9beb2 !important;
+}
+
+@media (max-width: 767px) {
+  nav > div {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  nav > div > div:nth-child(2) {
+    display: none;
+  }
+
+  nav > div > div:last-child {
+    margin-left: auto;
+  }
+
+  #home h1 {
+    font-size: clamp(3rem, 14vw, 4.5rem) !important;
+  }
+
+  #home > div > div:last-child {
+    padding-bottom: 22px;
+  }
+
+  #contact a {
+    min-width: 0;
+  }
+}
