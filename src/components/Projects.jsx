@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const projects = [
   {
     number: '01',
@@ -41,6 +43,20 @@ const projects = [
 
 
 function Projects() {
+  const [activeProject, setActiveProject] = useState(0)
+
+  const showPreviousProject = () => {
+    setActiveProject((current) =>
+      current === 0 ? projects.length - 1 : current - 1,
+    )
+  }
+
+  const showNextProject = () => {
+    setActiveProject((current) =>
+      current === projects.length - 1 ? 0 : current + 1,
+    )
+  }
+
   return (
     <section
       id="work"
@@ -81,7 +97,7 @@ function Projects() {
 
         <div className="border-t border-[#E4E7EC]">
 
-          {projects.map((project) => (
+          {projects.map((project, index) => (
 
             <article
               key={project.number}
@@ -93,7 +109,9 @@ function Projects() {
                 transition-all
                 duration-300
                 md:py-16
+                data-[active=false]:hidden
               "
+              data-active={activeProject === index}
             >
 
               <div
@@ -385,6 +403,39 @@ function Projects() {
             </article>
 
           ))}
+
+        </div>
+
+
+        {/* ==================================================
+            CIRCULAR PROJECT CONTROLS
+        ================================================== */}
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-5">
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={showPreviousProject}
+              aria-label="Show previous project"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D0D5DD] text-lg text-[#203B49] transition-all duration-200 hover:border-[#EC6A4F] hover:bg-[#EC6A4F] hover:text-white"
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
+              onClick={showNextProject}
+              aria-label="Show next project"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D0D5DD] text-lg text-[#203B49] transition-all duration-200 hover:border-[#EC6A4F] hover:bg-[#EC6A4F] hover:text-white"
+            >
+              →
+            </button>
+          </div>
+
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#66736D]">
+            {String(activeProject + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
+          </p>
 
         </div>
 
