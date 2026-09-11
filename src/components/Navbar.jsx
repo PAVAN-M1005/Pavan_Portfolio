@@ -1,4 +1,8 @@
+import { useState } from 'react'
+
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const navItems = [
     { name: 'Work', id: 'work' },
     { name: 'Skills', id: 'skills' },
@@ -39,8 +43,22 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Social Links */}
+        {/* Social Links and mobile menu toggle */}
         <div className="flex items-center gap-2">
+
+          <button
+            type="button"
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#E4E7EC] text-[#475467] transition-all duration-200 hover:border-[#356AE6] hover:text-[#356AE6] md:hidden"
+          >
+            <span className="flex w-4 flex-col gap-1">
+              <span className="h-px w-full bg-current" />
+              <span className="h-px w-full bg-current" />
+              <span className="h-px w-full bg-current" />
+            </span>
+          </button>
 
           <a
             href="https://github.com/PAVAN-M1005"
@@ -72,6 +90,23 @@ function Navbar() {
         </div>
 
       </div>
+
+      {isMenuOpen && (
+        <div className="absolute left-0 right-0 top-full border-t border-[#E4E7EC] bg-white px-6 py-4 shadow-lg md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setIsMenuOpen(false)}
+                className="rounded-lg px-3 py-3 text-sm font-semibold text-[#475467] transition-colors duration-200 hover:bg-[#F2F4F7] hover:text-[#356AE6]"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   )
 }
