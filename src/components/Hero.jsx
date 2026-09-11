@@ -124,7 +124,7 @@ function Hero() {
         {/* RIGHT — PHOTO */}
         <div className="order-2 flex justify-center lg:order-2 lg:justify-end">
 
-          <div className="group relative w-full max-w-[330px] sm:max-w-[380px]">
+          <div className="hero-photo group relative w-full max-w-[360px] sm:max-w-[420px]">
 
             {/* Hover Glow */}
             <div
@@ -144,6 +144,7 @@ function Hero() {
             {/* Photo Container */}
             <div
               className="
+                hero-photo-frame
                 relative
                 overflow-hidden
                 rounded-[24px]
