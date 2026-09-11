@@ -39,6 +39,29 @@ const projects = [
     live:
       'https://expensetracker001-ashy.vercel.app/',
   },
+
+  {
+    number: '03',
+    title: 'Autonomous Ecom Agent',
+    subtitle: 'AI-Powered E-commerce Price Intelligence',
+    description:
+      'A modern full-stack price tracking platform for monitoring product prices across multiple e-commerce platforms, with secure auth, price history, smart refresh flows, and an AI assistant for product guidance and insights.',
+    category: 'AI / E-commerce',
+    technologies: [
+      'React',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'Python',
+      'Flask',
+      'BeautifulSoup',
+      'Selenium',
+      'Gemini AI',
+      'JWT',
+    ],
+    github:
+      'https://github.com/PAVAN-M1005/Autonomous-Ecom-Agent',
+  },
 ]
 
 
@@ -452,7 +475,7 @@ function Projects() {
         <div className="mt-10 flex items-center justify-between">
 
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#98A2B3]">
-            02 Featured Projects
+            03 Featured Projects
           </p>
 
           <div className="flex items-center gap-3">
