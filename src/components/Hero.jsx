@@ -9,7 +9,7 @@ function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
 
         {/* LEFT — CONTENT */}
-        <div className="order-2 lg:order-1">
+        <div className="order-1 lg:order-1">
 
           {/* Label */}
           <div className="mb-6 flex items-center gap-3">
@@ -122,9 +122,9 @@ function Hero() {
 
 
         {/* RIGHT — PHOTO */}
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+        <div className="order-2 flex justify-center lg:order-2 lg:justify-end">
 
-          <div className="group relative w-full max-w-[380px]">
+          <div className="group relative w-full max-w-[330px] sm:max-w-[380px]">
 
             {/* Hover Glow */}
             <div
