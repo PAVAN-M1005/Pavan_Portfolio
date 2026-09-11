@@ -44,14 +44,17 @@ const projects = [
 
 function Projects() {
   const [activeProject, setActiveProject] = useState(0)
+  const [slideDirection, setSlideDirection] = useState('next')
 
   const showPreviousProject = () => {
+    setSlideDirection('previous')
     setActiveProject((current) =>
       current === 0 ? projects.length - 1 : current - 1,
     )
   }
 
   const showNextProject = () => {
+    setSlideDirection('next')
     setActiveProject((current) =>
       current === projects.length - 1 ? 0 : current + 1,
     )
@@ -100,8 +103,8 @@ function Projects() {
           {projects.map((project, index) => (
 
             <article
-              key={project.number}
-              className="
+              key={`${project.number}-${activeProject === index ? activeProject : 'hidden'}`}
+              className={`
                 group
                 border-b
                 border-[#E4E7EC]
@@ -110,7 +113,9 @@ function Projects() {
                 duration-300
                 md:py-16
                 data-[active=false]:hidden
-              "
+                project-slide
+                ${index === activeProject ? `project-slide-${slideDirection}` : ''}
+              `}
               data-active={activeProject === index}
             >
 
